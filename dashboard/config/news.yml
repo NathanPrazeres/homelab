@@ -1,0 +1,53 @@
+- name: News
+  columns:
+    - size: small
+      widgets:
+        - type: rss
+          limit: 15
+          collapse-after: 5
+          cache: 6h
+          feeds:
+            - url: https://fenix.tecnico.ulisboa.pt/disciplinas/AGI112/2025-2026/1-semestre/rss/
+              title: AGISIT
+            - url: https://fenix.tecnico.ulisboa.pt/disciplinas/ARC112/2025-2026/1-semestre/rss/
+              title: CRC
+            - url: https://selfh.st/rss/
+              title: selfh.st
+
+    - size: full
+      widgets:
+        - type: group
+          widgets:
+            - type: reddit
+              subreddit: selfhosted
+              show-thumbnails: true
+            - type: reddit
+              subreddit: piracy
+              show-thumbnails: true
+            - type: reddit
+              subreddit: technology
+              show-thumbnails: true
+            - type: reddit
+              subreddit: shitamericanssay
+              show-thumbnails: true
+            - type: hacker-news
+            - type: lobsters
+
+    - size: small
+      widgets:
+        - type: markets
+          markets:
+            - symbol: SPY
+              name: S&P 500
+            - symbol: AMD
+              name: AMD
+            - symbol: NVDA
+              name: NVIDIA
+            - symbol: ASML
+              name: ASML
+            - symbol: PLTR
+              name: Palantir
+            - symbol: OKLO
+              name: Oklo
+            - symbol: RKLB
+              name: Rocket Lab

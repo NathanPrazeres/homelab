@@ -1,0 +1,48 @@
+services:
+  glance:
+    container_name: glance
+    image: glanceapp/glance
+    restart: unless-stopped
+    volumes:
+      - ./config:/app/config
+      - ./assets:/app/assets
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - glance
+      - rev_proxy
+    environment:
+      PIHOLE_PASSWORD: $PIHOLE_PASSWORD
+    extra_hosts:
+      - "pihole.nvsp.dev:192.168.1.74" # Fix the monitor widget for Pi-Hole
+    labels:
+      glance.name: Glance
+      glance.icon: sh:glance
+      glance.url: https://dash.nvsp.dev/
+      glance.description: Dashboard
+      glance.id: glance
+
+  cup:
+    image: ghcr.io/sergi0g/cup:latest
+    container_name: cup
+    command: ["serve", "-p", "9000"]
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    restart: unless-stopped
+    networks:
+      - glance
+    labels:
+      glance.name: Cup
+      glance.parent: glance
+      # glance.icon: sh:cup-updates
+      # glance.url: http://cup:9000/
+      # glance.description: Docker Image Update Checker
+      # glance.id: cup
+
+networks:
+  rev_proxy:
+    external: true
+  glance:
+    ipam:
+      config:
+        - subnet: 172.22.0.0/16

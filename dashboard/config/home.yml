@@ -1,0 +1,287 @@
+- name: Home
+  # Optionally, if you only have a single page you can hide the desktop navigation for a cleaner look
+  # hide-desktop-navigation: true
+  columns:
+    - size: small
+      widgets:
+        - type: calendar
+          first-day-of-week: monday
+
+        - type: weather
+          location: Intendente, Portugal
+          units: metric
+          hour-format: 24h
+          show-area-name: true
+
+    - size: full
+      widgets:
+        - type: search
+          search-engine: google
+          autofocus: true
+          bangs:
+            - title: YouTube
+              shortcut: yt
+              url: https://www.youtube.com/results?search_query={QUERY}
+            - title: Genius
+              shortcut: g
+              url: https://genius.com/search?q={QUERY}
+            - title: Perplexity
+              shortcut: ai
+              url: https://www.perplexity.ai/search?q={QUERY}
+
+        - type: group
+          widgets:
+            - type: bookmarks
+              groups:
+                - title: "Quick Access"
+                  hide-arrow: true
+                  same-tab: true
+                  color: 100 50 50
+                  links:
+                    - title: Técnico
+                      url: https://id.tecnico.ulisboa.pt/cas/login/
+                      icon: ./assets/icons/ist.png
+                    - title: GitHub
+                      url: https://www.github.com/
+                      icon: sh:github-light
+                    - title: Wikipedia
+                      url: https://en.wikipedia.org/
+                      icon: sh:wikipedia
+                # - title: "Google"
+                #   hide-arrow: true
+                #   same-tab: true
+                #   color: 50 40 50
+                #   links:
+                    - title: YouTube
+                      url: https://www.youtube.com/
+                      icon: sh:youtube
+                    - title: Gmail
+                      url: https://mail.google.com/mail/u/0/
+                      icon: sh:gmail
+                - title: "Home Lab"
+                  hide-arrow: true
+                  same-tab: true
+                  color: 200 50 50
+                  links:
+                    - title: Immich
+                      url: https://photos.nvsp.dev/
+                      icon: sh:immich
+                    - title: Jellyfin
+                      url: https://media.nvsp.dev/
+                      icon: sh:jellyfin
+                    - title: Seerr
+                      url: https://seerr.nvsp.dev/
+                      icon: sh:seerr
+                    - title: Radarr
+                      url: https://radarr.nvsp.dev/
+                      icon: sh:radarr
+                    - title: Sonarr
+                      url: https://Sonarr.nvsp.dev/
+                      icon: sh:sonarr
+                - title: "Tools & Utils"
+                  hide-arrow: true
+                  same-tab: true
+                  color: 10 70 70
+                  links:
+                    - title: ChatGPT
+                      url: https://chat.openai.com/
+                      icon: sh:chatgpt
+                    - title: CyberChef
+                      url: https://gchq.github.io/CyberChef/
+                      icon: sh:cyberchef
+                    - title: Champagne Piracy
+                      url: https://champagne.pages.dev/
+                      icon: sh:github-light
+                    - title: SteamDB
+                      url: https://steamdb.info
+                      icon: si:steamdb
+                - title: "" # NOTE: continuation of Home Lab
+                  hide-arrow: true
+                  same-tab: true
+                  links:
+                    - title: Lidarr
+                      url: https://lidarr.nvsp.dev/
+                      icon: sh:lidarr
+                    - title: Nextcloud
+                      url: https://cloud.nvsp.dev/
+                      icon: sh:nextcloud
+                    - title: Pi-Hole
+                      url: https://pihole.nvsp.dev/
+                      icon: sh:pi-hole
+                    - title: qBittorrent
+                      url: https://torrent.nvsp.dev/
+                      icon: sh:qbittorrent
+                    - title: Vaultwarden
+                      url: https://vault.nvsp.dev/
+                      icon: sh:vaultwarden-light
+
+            - type: videos
+              style: grid-cards
+              collapse-after-rows: 2
+              channels:
+                # https://github.com/glanceapp/glance/blob/main/docs/configuration.md#channels
+
+                # Video Essays (varied topics)
+                - UCVWhVAZwCdQsPZL-mDLcxPQ # Whitelight
+                - UCXX1iQGufHujuIvQ38MPKMA # MauLer
+                - UCYcOHH6u-8w2yB1mKbXP1Uw # The Little Platoon
+                - UCwk2aG2ErEa__zWG2kCWKVA # LostChord
+                - UCI9DUIgtRGHNH_HmSTcfUbA # The Closer Look
+
+                # Movie Critiques
+                - UCSJPFQdZwrOutnmSFYtbstA # The Critical Drinker
+                - UC5ckqMQFqpqVbGJNiHhNE7Q # Critical Drinker After Hours
+                - UCCUJrP3Mfl7jGMHnEkflvBA # Space Ice
+                - UCk7X9Wzqmrgpv9TrBpUnT-g # Disparu
+                - UC5T0tXJN5CrMZUEJuz4oovw # Nerdrotic
+                - UCRCraKP10Q5fSAbCimkizIA # Nerdrotic Daily
+                - UCY6Ij8zOds0WJEeqCLOnqOQ # Alex Meyers
+                - UCBRWBRAwpuKvaOJpXd9Uj7Q # Robot Head
+                - UCkzaJDHBKbcaNatH_T00ieg # High Boi
+                - UC9Kq-yEt1iYsbUzNOoIRK0g # Pitch Meeting
+
+                # Programming / Engineering
+                - UCsBjURrPoezykLs9EqgamOA # Fireship
+                - UCtMVHI3AJD4Qk4hcbZnI9ZQ # SomeOrdinaryGamers
+                - UCVeW9qkBjo3zosnqUbG7CFw # John Hammond
+                - UC6biysICWOJ-C3P4Tyeggzg # Low Level Learning
+                - UCj1VqrHhDte54oLgPG4xpuQ # Stuff Made Here
+                - UCZXW8E1__d5tZb-wLFOt8TQ # Bog
+
+                # Video Games
+                - UCfgjRh-k42mhKBCSBiH2X8A # Awesome Epic Guys
+                - UC9OZkS1Mhl5UvKSiPrYqsxg # WolfeyVGC
+                - UCBtHvVMt0_Ozr8L7l8hS0ow # Kylerzz (Football .exe videos)
+
+                # TODO: Add more channels I want to watch on a regular basis
+
+    - size: small
+      widgets:
+        - type: to-do
+
+        - type: custom-api
+          title: LeetCode Daily Question
+          cache: 6h
+          url: https://leetcode.com/graphql
+          method: POST
+          headers:
+            Accept: application/json
+          body-type: json
+          body:
+            query: |
+              query questionOfToday {
+                activeDailyCodingChallengeQuestion {
+                  link
+                  question {
+                    questionId
+                    title
+                    difficulty
+                    topicTags {
+                      name
+                      slug
+                    }
+                  }
+                }
+              }
+            operationName: questionOfToday
+          template: |
+            <div class="leetcode-card">
+              <style>
+                .leetcode-card {
+                  max-width: 600px;
+                  margin: 8px auto;
+                  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                  transition: transform 0.2s ease, box-shadow 0.2s ease;
+                }
+                .leetcode-card h1 {
+                  font-size: 24px;
+                  margin: 0 0 16px;
+                  line-height: 1.3;
+                }
+                .leetcode-card h1 a {
+                  color: #8CAAEE;
+                  text-decoration: none;
+                  transition: color 0.2s ease;
+                }
+                .leetcode-card h1 a:hover {
+                  color: #BAC8FF;
+                  text-decoration: underline;
+                }
+                .leetcode-card p {
+                  margin: 8px 0;
+                  color: #C6D0F5;
+                  font-size: 16px;
+                }
+                .leetcode-card .difficulty {
+                  font-weight: 600;
+                  color: #A5ADCE;
+                }
+                .leetcode-card .difficulty.Easy {
+                  color: #A6D189;
+                }
+                .leetcode-card .difficulty.Medium {
+                  color: #E5C890;
+                }
+                .leetcode-card .difficulty.Hard {
+                  color: #E78284;
+                }
+                .leetcode-card .topics {
+                  display: flex;
+                  flex-wrap: wrap;
+                  gap: 8px;
+                  margin: 12px 0;
+                }
+                .leetcode-card .topic-tag {
+                  background: #CA9EE6;
+                  color: #303446;
+                  padding: 4px 12px;
+                  border-radius: 16px;
+                  font-size: 14px;
+                  font-weight: 500;
+                  transition: transform 0.2s ease;
+                }
+                .leetcode-card .topic-tag:hover {
+                  transform: scale(1.05);
+                }
+                .leetcode-card .premium {
+                  color: #E78284;
+                  font-weight: 600;
+                  margin-top: 12px;
+                }
+                @media (max-width: 600px) {
+                  .leetcode-card {
+                    padding: 16px;
+                    margin: 8px;
+                  }
+                  .leetcode-card h1 {
+                    font-size: 20px;
+                  }
+                  .leetcode-card p {
+                    font-size: 14px;
+                  }
+                  .leetcode-card .topic-tag {
+                    font-size: 12px;
+                    padding: 3px 10px;
+                  }
+                }
+              </style>
+              <h1>
+                <a href="https://leetcode.com{{ .JSON.String "data.activeDailyCodingChallengeQuestion.link" }}" target="_blank">
+                  {{ .JSON.String "data.activeDailyCodingChallengeQuestion.question.questionId" }} - {{ .JSON.String "data.activeDailyCodingChallengeQuestion.question.title" }}
+                </a>
+              </h1>
+              <p class="difficulty {{ .JSON.String "data.activeDailyCodingChallengeQuestion.question.difficulty" }}"><strong>Difficulty:</strong> {{ .JSON.String "data.activeDailyCodingChallengeQuestion.question.difficulty" }}</p>
+              <p><strong>Topics:</strong></p>
+              <div class="topics">
+                {{ if .JSON.Exists "data.activeDailyCodingChallengeQuestion.question.topicTags" }}
+                  {{ range .JSON.Array "data.activeDailyCodingChallengeQuestion.question.topicTags" }}
+                    <span class="topic-tag">{{ .String "name" }}</span>
+                  {{ end }}
+                {{ else }}
+                  <span class="topic-tag">None</span>
+                {{ end }}
+              </div>
+              {{ if .JSON.Bool "data.activeDailyCodingChallengeQuestion.question.paidOnly" }}
+                <p class="premium">This is a Premium question</p>
+              {{ end }}
+            </div>
