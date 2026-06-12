@@ -1,5 +1,5 @@
 - type: custom-api
-  title: Daily Chess Puzzle
+  title: Chess Puzzle
   cache: 6h
   url: https://api.chess.com/pub/puzzle
   template: |

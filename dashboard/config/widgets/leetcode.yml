@@ -1,5 +1,5 @@
 - type: custom-api
-  title: LeetCode Daily Question
+  title: LeetCode Daily
   cache: 6h
   url: https://leetcode.com/graphql
   method: POST
