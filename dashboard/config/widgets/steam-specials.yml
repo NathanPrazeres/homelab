@@ -1,0 +1,30 @@
+- type: custom-api
+  title: Steam Specials
+  cache: 12h
+  url: https://store.steampowered.com/api/featuredcategories?cc=pt
+  template: |
+    <ul class="list list-gap-10 collapsible-container" data-collapse-after="8">
+    {{ range .JSON.Array "specials.items" }}
+      {{ $header := .String "header_image" }}
+      {{ $urlPrefix := "https://store.steampowered.com/sub/" }}
+      {{ if findMatch "/steam/apps/" $header }}
+        {{ $urlPrefix = "https://store.steampowered.com/app/" }}
+      {{ end }}
+      <li>
+        <a class="size-h4 color-highlight block text-truncate" href="{{ $urlPrefix }}{{ .Int "id" }}/">{{ .String "name" }}</a>
+        <ul class="list-horizontal-text">
+          {{ $price := .Int "final_price" }}
+          <li>{{ $price | toFloat | mul 0.01 | printf "%.2f€" }}</li>
+
+          {{ $discount := .Int "discount_percent" }}
+          <li{{ if ge $discount 40 }} class="color-positive"{{ end }}>{{ $discount }}% off</li>
+
+          {{ $expiry := .String "discount_expiration" }}
+          {{ $soon := offsetNow "24h" | formatTime "unix" }}
+          <li{{ if ge $soon $expiry }} class="color-negative"{{ end }}>
+            Offer ends <span {{ $expiry | parseLocalTime "unix" | toRelativeTime }}/>
+          </li>
+        </ul>
+      </li>
+    {{ end }}
+    </ul>

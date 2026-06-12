@@ -8,13 +8,13 @@ services:
       - ./assets:/app/assets
       - /etc/localtime:/etc/localtime:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /mnt/data:/data:ro
     networks:
       - glance
       - rev_proxy
-    environment:
-      PIHOLE_PASSWORD: $PIHOLE_PASSWORD
+    env_file: ".env"
     extra_hosts:
-      - "pihole.nvsp.dev:192.168.1.74" # Fix the monitor widget for Pi-Hole
+      - "pihole.nvsp.dev:$PIHOLE_HOST"  # Fix the monitor widget for Pi-Hole
     labels:
       glance.name: Glance
       glance.icon: sh:glance

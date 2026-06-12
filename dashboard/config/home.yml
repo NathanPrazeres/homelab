@@ -31,6 +31,7 @@
 
         - type: group
           widgets:
+            # TODO: turn this into split column for proper mobile formatting
             - type: bookmarks
               groups:
                 - title: "Quick Access"
@@ -43,10 +44,10 @@
                       icon: ./assets/icons/ist.png
                     - title: GitHub
                       url: https://www.github.com/
-                      icon: sh:github-light
+                      icon: auto-invert di:github
                     - title: Wikipedia
                       url: https://en.wikipedia.org/
-                      icon: sh:wikipedia
+                      icon: di:wikipedia
                 # - title: "Google"
                 #   hide-arrow: true
                 #   same-tab: true
@@ -54,44 +55,44 @@
                 #   links:
                     - title: YouTube
                       url: https://www.youtube.com/
-                      icon: sh:youtube
+                      icon: di:youtube
                     - title: Gmail
                       url: https://mail.google.com/mail/u/0/
-                      icon: sh:gmail
+                      icon: di:gmail
                 - title: "Home Lab"
                   hide-arrow: true
                   same-tab: true
                   color: 200 50 50
                   links:
                     - title: Immich
-                      url: https://photos.nvsp.dev/
-                      icon: sh:immich
+                      url: https://photos.${DOMAIN:-example.com}/
+                      icon: di:immich
                     - title: Jellyfin
-                      url: https://media.nvsp.dev/
-                      icon: sh:jellyfin
+                      url: https://media.${DOMAIN:-example.com}/
+                      icon: di:jellyfin
                     - title: Seerr
-                      url: https://seerr.nvsp.dev/
-                      icon: sh:seerr
+                      url: https://seerr.${DOMAIN:-example.com}/
+                      icon: di:seerr
                     - title: Radarr
-                      url: https://radarr.nvsp.dev/
-                      icon: sh:radarr
+                      url: https://radarr.${DOMAIN:-example.com}/
+                      icon: di:radarr
                     - title: Sonarr
-                      url: https://Sonarr.nvsp.dev/
-                      icon: sh:sonarr
+                      url: https://sonarr.${DOMAIN:-example.com}/
+                      icon: di:sonarr
                 - title: "Tools & Utils"
                   hide-arrow: true
                   same-tab: true
                   color: 10 70 70
                   links:
-                    - title: ChatGPT
-                      url: https://chat.openai.com/
-                      icon: sh:chatgpt
+                    - title: Gemini
+                      url: https://gemini.google.com/
+                      icon: di:google-gemini
                     - title: CyberChef
                       url: https://gchq.github.io/CyberChef/
-                      icon: sh:cyberchef
+                      icon: di:cyberchef
                     - title: Champagne Piracy
                       url: https://champagne.pages.dev/
-                      icon: sh:github-light
+                      icon: auto-invert di:github
                     - title: SteamDB
                       url: https://steamdb.info
                       icon: si:steamdb
@@ -100,20 +101,22 @@
                   same-tab: true
                   links:
                     - title: Lidarr
-                      url: https://lidarr.nvsp.dev/
-                      icon: sh:lidarr
+                      url: https://lidarr.${DOMAIN:-example.com}/
+                      icon: di:lidarr
                     - title: Nextcloud
-                      url: https://cloud.nvsp.dev/
-                      icon: sh:nextcloud
+                      url: https://cloud.${DOMAIN:-example.com}/
+                      icon: di:nextcloud
                     - title: Pi-Hole
-                      url: https://pihole.nvsp.dev/
-                      icon: sh:pi-hole
+                      url: https://pihole.${DOMAIN:-example.com}/
+                      icon: di:pi-hole
                     - title: qBittorrent
-                      url: https://torrent.nvsp.dev/
-                      icon: sh:qbittorrent
+                      url: https://qbit.${DOMAIN:-example.com}/
+                      icon: di:qbittorrent
                     - title: Vaultwarden
-                      url: https://vault.nvsp.dev/
-                      icon: sh:vaultwarden-light
+                      url: https://vault.${DOMAIN:-example.com}/
+                      icon: di:vaultwarden-light
+
+            - $include: widgets/nextcloud-deck.yml
 
             - type: videos
               style: grid-cards
@@ -148,140 +151,21 @@
                 - UCj1VqrHhDte54oLgPG4xpuQ # Stuff Made Here
                 - UCZXW8E1__d5tZb-wLFOt8TQ # Bog
 
-                # Video Games
+                # Games
+                - UCQD3awTLw9i8Xzh85FKsuJA # SovietWomble
                 - UCfgjRh-k42mhKBCSBiH2X8A # Awesome Epic Guys
                 - UC9OZkS1Mhl5UvKSiPrYqsxg # WolfeyVGC
                 - UCBtHvVMt0_Ozr8L7l8hS0ow # Kylerzz (Football .exe videos)
 
                 # TODO: Add more channels I want to watch on a regular basis
 
+            - $include: widgets/jellyfin.yml
+            - $include: widgets/media.yml
     - size: small
       widgets:
-        - type: to-do
+        - type: group
+          widgets:
+            - $include: widgets/leetcode.yml
+            - $include: widgets/chess.yml
 
-        - type: custom-api
-          title: LeetCode Daily Question
-          cache: 6h
-          url: https://leetcode.com/graphql
-          method: POST
-          headers:
-            Accept: application/json
-          body-type: json
-          body:
-            query: |
-              query questionOfToday {
-                activeDailyCodingChallengeQuestion {
-                  link
-                  question {
-                    questionId
-                    title
-                    difficulty
-                    topicTags {
-                      name
-                      slug
-                    }
-                  }
-                }
-              }
-            operationName: questionOfToday
-          template: |
-            <div class="leetcode-card">
-              <style>
-                .leetcode-card {
-                  max-width: 600px;
-                  margin: 8px auto;
-                  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-                  transition: transform 0.2s ease, box-shadow 0.2s ease;
-                }
-                .leetcode-card h1 {
-                  font-size: 24px;
-                  margin: 0 0 16px;
-                  line-height: 1.3;
-                }
-                .leetcode-card h1 a {
-                  color: #8CAAEE;
-                  text-decoration: none;
-                  transition: color 0.2s ease;
-                }
-                .leetcode-card h1 a:hover {
-                  color: #BAC8FF;
-                  text-decoration: underline;
-                }
-                .leetcode-card p {
-                  margin: 8px 0;
-                  color: #C6D0F5;
-                  font-size: 16px;
-                }
-                .leetcode-card .difficulty {
-                  font-weight: 600;
-                  color: #A5ADCE;
-                }
-                .leetcode-card .difficulty.Easy {
-                  color: #A6D189;
-                }
-                .leetcode-card .difficulty.Medium {
-                  color: #E5C890;
-                }
-                .leetcode-card .difficulty.Hard {
-                  color: #E78284;
-                }
-                .leetcode-card .topics {
-                  display: flex;
-                  flex-wrap: wrap;
-                  gap: 8px;
-                  margin: 12px 0;
-                }
-                .leetcode-card .topic-tag {
-                  background: #CA9EE6;
-                  color: #303446;
-                  padding: 4px 12px;
-                  border-radius: 16px;
-                  font-size: 14px;
-                  font-weight: 500;
-                  transition: transform 0.2s ease;
-                }
-                .leetcode-card .topic-tag:hover {
-                  transform: scale(1.05);
-                }
-                .leetcode-card .premium {
-                  color: #E78284;
-                  font-weight: 600;
-                  margin-top: 12px;
-                }
-                @media (max-width: 600px) {
-                  .leetcode-card {
-                    padding: 16px;
-                    margin: 8px;
-                  }
-                  .leetcode-card h1 {
-                    font-size: 20px;
-                  }
-                  .leetcode-card p {
-                    font-size: 14px;
-                  }
-                  .leetcode-card .topic-tag {
-                    font-size: 12px;
-                    padding: 3px 10px;
-                  }
-                }
-              </style>
-              <h1>
-                <a href="https://leetcode.com{{ .JSON.String "data.activeDailyCodingChallengeQuestion.link" }}" target="_blank">
-                  {{ .JSON.String "data.activeDailyCodingChallengeQuestion.question.questionId" }} - {{ .JSON.String "data.activeDailyCodingChallengeQuestion.question.title" }}
-                </a>
-              </h1>
-              <p class="difficulty {{ .JSON.String "data.activeDailyCodingChallengeQuestion.question.difficulty" }}"><strong>Difficulty:</strong> {{ .JSON.String "data.activeDailyCodingChallengeQuestion.question.difficulty" }}</p>
-              <p><strong>Topics:</strong></p>
-              <div class="topics">
-                {{ if .JSON.Exists "data.activeDailyCodingChallengeQuestion.question.topicTags" }}
-                  {{ range .JSON.Array "data.activeDailyCodingChallengeQuestion.question.topicTags" }}
-                    <span class="topic-tag">{{ .String "name" }}</span>
-                  {{ end }}
-                {{ else }}
-                  <span class="topic-tag">None</span>
-                {{ end }}
-              </div>
-              {{ if .JSON.Bool "data.activeDailyCodingChallengeQuestion.question.paidOnly" }}
-                <p class="premium">This is a Premium question</p>
-              {{ end }}
-            </div>
+        - $include: widgets/football.yml
