@@ -65,19 +65,19 @@
                   color: 200 50 50
                   links:
                     - title: Immich
-                      url: https://photos.${DOMAIN:-example.com}/
+                      url: https://photos.${DOMAIN}/
                       icon: di:immich
                     - title: Jellyfin
-                      url: https://media.${DOMAIN:-example.com}/
+                      url: https://media.${DOMAIN}/
                       icon: di:jellyfin
                     - title: Seerr
-                      url: https://seerr.${DOMAIN:-example.com}/
+                      url: https://seerr.${DOMAIN}/
                       icon: di:seerr
                     - title: Radarr
-                      url: https://radarr.${DOMAIN:-example.com}/
+                      url: https://radarr.${DOMAIN}/
                       icon: di:radarr
                     - title: Sonarr
-                      url: https://sonarr.${DOMAIN:-example.com}/
+                      url: https://sonarr.${DOMAIN}/
                       icon: di:sonarr
                 - title: "Tools & Utils"
                   hide-arrow: true
@@ -101,19 +101,19 @@
                   same-tab: true
                   links:
                     - title: Lidarr
-                      url: https://lidarr.${DOMAIN:-example.com}/
+                      url: https://lidarr.${DOMAIN}/
                       icon: di:lidarr
                     - title: Nextcloud
-                      url: https://cloud.${DOMAIN:-example.com}/
+                      url: https://cloud.${DOMAIN}/
                       icon: di:nextcloud
                     - title: Pi-Hole
-                      url: https://pihole.${DOMAIN:-example.com}/
+                      url: https://pihole.${DOMAIN}/
                       icon: di:pi-hole
                     - title: qBittorrent
-                      url: https://qbit.${DOMAIN:-example.com}/
+                      url: https://qbit.${DOMAIN}/
                       icon: di:qbittorrent
                     - title: Vaultwarden
-                      url: https://vault.${DOMAIN:-example.com}/
+                      url: https://vault.${DOMAIN}/
                       icon: di:vaultwarden-light
 
             - $include: widgets/nextcloud-deck.yml
