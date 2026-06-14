@@ -2,8 +2,11 @@
   title: Football Matches
   cache: 15s
   url: https://site.api.espn.com/apis/site/v2/sports/soccer/all/scoreboard
+  options:
+    timezone-offset: 1
   template: |
     {{- $fallback := "/assets/default-team-logo.png" -}}
+    {{- $tzOffset := .Options.IntOr "timezone-offset" 0 -}}
 
     <ul class="list list-gap-10 collapsible-container" data-collapse-after="2">
      {{ range .JSON.Array "events" }}
@@ -24,8 +27,44 @@
               <div style="width:30px; font-weight:bold; font-size: 11px; display:flex; align-items:center;">
                 {{- if eq $short "Scheduled" -}}
                   {{- $date := $comp0.String "date" -}}
+
+                  {{- $h := slice $date 11 13 -}}
+                  {{- $m := slice $date 14 16 -}}
+
+                  {{/* HACK: String to Int conversion */}}
+                  {{- $hInt := 0 -}}
+                  {{- if eq $h "00" -}}{{- $hInt = 0 -}}
+                  {{- else if eq $h "01" -}}{{- $hInt = 1 -}}
+                  {{- else if eq $h "02" -}}{{- $hInt = 2 -}}
+                  {{- else if eq $h "03" -}}{{- $hInt = 3 -}}
+                  {{- else if eq $h "04" -}}{{- $hInt = 4 -}}
+                  {{- else if eq $h "05" -}}{{- $hInt = 5 -}}
+                  {{- else if eq $h "06" -}}{{- $hInt = 6 -}}
+                  {{- else if eq $h "07" -}}{{- $hInt = 7 -}}
+                  {{- else if eq $h "08" -}}{{- $hInt = 8 -}}
+                  {{- else if eq $h "09" -}}{{- $hInt = 9 -}}
+                  {{- else if eq $h "10" -}}{{- $hInt = 10 -}}
+                  {{- else if eq $h "11" -}}{{- $hInt = 11 -}}
+                  {{- else if eq $h "12" -}}{{- $hInt = 12 -}}
+                  {{- else if eq $h "13" -}}{{- $hInt = 13 -}}
+                  {{- else if eq $h "14" -}}{{- $hInt = 14 -}}
+                  {{- else if eq $h "15" -}}{{- $hInt = 15 -}}
+                  {{- else if eq $h "16" -}}{{- $hInt = 16 -}}
+                  {{- else if eq $h "17" -}}{{- $hInt = 17 -}}
+                  {{- else if eq $h "18" -}}{{- $hInt = 18 -}}
+                  {{- else if eq $h "19" -}}{{- $hInt = 19 -}}
+                  {{- else if eq $h "20" -}}{{- $hInt = 20 -}}
+                  {{- else if eq $h "21" -}}{{- $hInt = 21 -}}
+                  {{- else if eq $h "22" -}}{{- $hInt = 22 -}}
+                  {{- else if eq $h "23" -}}{{- $hInt = 23 -}}
+                  {{- end -}}
+
+                  {{/* Fix day change (pass midnight) */}}
+                  {{- $shiftedH := mod (add (add $hInt $tzOffset) 24) 24 -}}
+
                   <span style="color:#aaa;">
-                    {{ printf "%s:%s" (slice $date 11 13) (slice $date 14 16) }}
+                    {{/* Restore leading zero back on single-digit hours */}}
+                    {{ printf "%02d:%s" $shiftedH $m }}
                   </span>
                 {{- else if eq $state "in" -}}
                   <span style="color:#00c853;">{{ $comp0.String "status.displayClock" }}</span>
