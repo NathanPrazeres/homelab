@@ -39,8 +39,11 @@
               hide: false     # hide disabled
               # optionally order, filters, etc
 
+            - $include: widgets/jellyfin.yml
+            - $include: widgets/media.yml
             - $include: widgets/immich.yml
             - $include: widgets/qbit.yml
+            - $include: widgets/nextcloud-deck.yml
 
     - size: small
       widgets:

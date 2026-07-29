@@ -116,8 +116,6 @@
                       url: https://vault.${DOMAIN}/
                       icon: di:vaultwarden-light
 
-            - $include: widgets/nextcloud-deck.yml
-
             - type: videos
               style: grid-cards
               collapse-after-rows: 2
@@ -126,18 +124,19 @@
 
                 # Video Essays (varied topics)
                 - UCVWhVAZwCdQsPZL-mDLcxPQ # Whitelight
+                - UCYGDiVemmhY_Q1M-hKp4fvw # big boss
                 - UCXX1iQGufHujuIvQ38MPKMA # MauLer
                 - UCYcOHH6u-8w2yB1mKbXP1Uw # The Little Platoon
-                - UCwk2aG2ErEa__zWG2kCWKVA # LostChord
+                # - UCwk2aG2ErEa__zWG2kCWKVA # LostChord
                 - UCI9DUIgtRGHNH_HmSTcfUbA # The Closer Look
 
                 # Movie Critiques
                 - UCSJPFQdZwrOutnmSFYtbstA # The Critical Drinker
-                - UC5ckqMQFqpqVbGJNiHhNE7Q # Critical Drinker After Hours
+                # - UC5ckqMQFqpqVbGJNiHhNE7Q # Critical Drinker After Hours
                 - UCCUJrP3Mfl7jGMHnEkflvBA # Space Ice
                 - UCk7X9Wzqmrgpv9TrBpUnT-g # Disparu
                 - UC5T0tXJN5CrMZUEJuz4oovw # Nerdrotic
-                - UCRCraKP10Q5fSAbCimkizIA # Nerdrotic Daily
+                # - UCRCraKP10Q5fSAbCimkizIA # Nerdrotic Daily
                 - UCY6Ij8zOds0WJEeqCLOnqOQ # Alex Meyers
                 - UCBRWBRAwpuKvaOJpXd9Uj7Q # Robot Head
                 - UCkzaJDHBKbcaNatH_T00ieg # High Boi
@@ -153,6 +152,7 @@
 
                 # Games
                 - UCF_moAPM1xuo7ET3o0bVJPg # FLEEKAZOID
+                - UCfgh3Ul_dG6plQ7rzuOLx-w # Max0r
                 - UCQD3awTLw9i8Xzh85FKsuJA # SovietWomble
                 - UCfgjRh-k42mhKBCSBiH2X8A # Awesome Epic Guys
                 - UC9OZkS1Mhl5UvKSiPrYqsxg # WolfeyVGC
@@ -160,13 +160,8 @@
 
                 # TODO: Add more channels I want to watch on a regular basis
 
-            - $include: widgets/jellyfin.yml
-            - $include: widgets/media.yml
     - size: small
       widgets:
-        - type: group
-          widgets:
-            - $include: widgets/leetcode.yml
-            - $include: widgets/chess.yml
+        - $include: widgets/leetcode.yml
+        - $include: widgets/chess.yml
 
-        - $include: widgets/football.yml

@@ -1,5 +1,5 @@
 - type: custom-api
-  title: Football Matches
+  title: Today's Football Matches
   cache: 15s
   url: https://site.api.espn.com/apis/site/v2/sports/soccer/all/scoreboard
   options:
