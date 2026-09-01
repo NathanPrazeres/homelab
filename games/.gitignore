@@ -3,7 +3,7 @@
 !/*
 
 # Ignore dotfiles
-.*
+.env
 
 # Allow git and docker
 !.gitignore
