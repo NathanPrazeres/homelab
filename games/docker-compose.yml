@@ -19,7 +19,7 @@ services:
     labels:
       glance.name: Twitch Drop Miner
       glance.icon: di:twitch
-      glance.url: https://twitch.${DOMAIN}
+      glance.url: https://twitch.${DOMAIN:-example.com}
       glance.description: Farm Drops from Twitch
       glance.id: twitch
 
