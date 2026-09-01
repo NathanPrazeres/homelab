@@ -1,0 +1,55 @@
+services:
+  twitch-drops-miner:
+    container_name: twitch-drops-miner
+    image: rangermix/twitch-drops-miner:latest
+    # ports:
+    #   - 6080:8080
+    volumes:
+      - ${TDM_DATA:-./twitch}/data:/app/data
+      - ${TDM_DATA:-./twitch}/logs:/app/logs
+    environment:
+      - TZ=${TZ:-Europe/London}
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "0.2"
+    networks:
+      - rev_proxy
+    labels:
+      glance.name: Twitch Drop Miner
+      glance.icon: di:twitch
+      glance.url: https://twitch.${DOMAIN}
+      glance.description: Farm Drops from Twitch
+      glance.id: twitch
+
+  terraria:
+    container_name: terraria
+    image: ryshe/terraria:vanilla-latest
+    # ports:
+    #   - 7777:7777
+    volumes:
+      - ${TERRARIA_DATA:-./terraria}/worlds:/root/.local/share/Terraria/Worlds
+      - ${TERRARIA_DATA:-./terraria}/config.txt:/config/serverconfig.txt
+      - ${TERRARIA_DATA:-./terraria}/logs:/terraria-server/logs
+    environment:
+      - WORLD_FILENAME=${WORLD_FILENAME}
+    restart: unless-stopped
+    # Attach to the container with `docker attach terraria`
+    # Detach with Ctrl-p Ctrl-q
+    tty: true
+    stdin_open: true
+    networks:
+      - rev_proxy
+    labels:
+      glance.name: Terraria
+      glance.icon: di:terraria
+      glance.url: https://terraria.wiki.gg/
+      glance.description: Terraria Server
+      glance.id: terraria
+
+
+networks:
+  rev_proxy:
+    external: true
+

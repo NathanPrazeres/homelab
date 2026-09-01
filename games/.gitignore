@@ -1,0 +1,14 @@
+# Whitelist mode
+*
+!/*
+
+# Ignore dotfiles
+.*
+
+# Allow git and docker
+!.gitignore
+!docker-compose.yml
+
+# Whitelist config files
+!config.txt
+!settings.json

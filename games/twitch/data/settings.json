@@ -1,0 +1,41 @@
+{
+    "connection_quality": 1,
+    "dark_mode": true,
+    "games_to_watch": [
+        "Brawlhalla",
+        "World of Tanks",
+        "Borderlands 4",
+        "LEGO Batman: Legacy of the Dark Knight",
+        "Warframe",
+        "Pok\u00e9mon Champions",
+        "Grand Theft Auto V",
+        "Rust",
+        "World of Tanks: HEAT",
+        "World of Warships",
+        "Wolvesville",
+        "ROBLOX",
+        "Special Events"
+    ],
+    "inventory_filters": {
+        "game_name_search": [],
+        "show_active": true,
+        "show_benefit_badge": true,
+        "show_benefit_emote": true,
+        "show_benefit_item": true,
+        "show_benefit_other": true,
+        "show_expired": false,
+        "show_finished": false,
+        "show_only_not_linked": false,
+        "show_upcoming": true
+    },
+    "inventory_list_view": true,
+    "language": "English",
+    "minimum_refresh_interval_minutes": 30,
+    "mining_benefits": {
+        "BADGE": true,
+        "DIRECT_ENTITLEMENT": true,
+        "EMOTE": true,
+        "UNKNOWN": true
+    },
+    "proxy": ""
+}
