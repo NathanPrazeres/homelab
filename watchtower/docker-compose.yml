@@ -1,0 +1,31 @@
+services:
+  watchtower:
+    image: nickfedor/watchtower
+    container_name: watchtower
+    restart: unless-stopped
+    environment:
+      - TZ=${TZ}
+      - PUID=${PUID}
+      - PGID=${PGID}
+
+      - WATCHTOWER_CLEANUP=true
+      - WATCHTOWER_INCLUDE_RESTARTING=true
+      - WATCHTOWER_INCLUDE_STOPPED=false
+      - WATCHTOWER_REVIVE_STOPPED=false
+      - WATCHTOWER_LABEL_ENABLE=false
+
+      - WATCHTOWER_SCHEDULE=0 4 * * *
+
+      # - WATCHTOWER_POLL_INTERVAL=60
+
+      # - WATCHTOWER_NOTIFICATION_SPLIT_BY_CONTAINER=true
+      # - WATCHTOWER_NOTIFICATION_URL=gotify://${GOTIFY_URL}/${GOTIFY_TOKEN}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./config.json:/config.json
+    labels:
+      glance.name: Watchtower
+      glance.icon: di:watchtower
+      glance.description: Docker Container Updater
+      glance.id: watchtower
+
