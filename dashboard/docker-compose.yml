@@ -4,11 +4,11 @@ services:
     image: glanceapp/glance
     restart: unless-stopped
     volumes:
-      - ./config:/app/config
-      - ./assets:/app/assets
       - /etc/localtime:/etc/localtime:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - /mnt/data:/data:ro
+      - ${CONFIG_DIR}/config:/app/config
+      - ${CONFIG_DIR}/assets:/app/assets
+      - ${DATA_DIR}:/data:ro
     networks:
       - glance
       - rev_proxy
@@ -19,8 +19,8 @@ services:
       glance.name: Glance
       glance.icon: sh:glance
       glance.url: https://dash.nvsp.dev/
-      glance.description: Dashboard
-      glance.id: glance
+      glance.description: Server's Web Dashboard
+      glance.id: dashboard
 
   cup:
     image: ghcr.io/sergi0g/cup:latest
