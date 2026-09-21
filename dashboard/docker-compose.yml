@@ -1,7 +1,7 @@
 services:
-  glance:
-    container_name: glance
-    image: glanceapp/glance
+  dashboard:
+    container_name: dashboard
+    image: panonim/dynacat
     restart: unless-stopped
     volumes:
       - /etc/localtime:/etc/localtime:ro
@@ -16,8 +16,8 @@ services:
     extra_hosts:
       - "pihole.nvsp.dev:$PIHOLE_HOST"  # Fix the monitor widget for Pi-Hole
     labels:
-      glance.name: Glance
-      glance.icon: sh:glance
+      glance.name: Dynacat
+      glance.icon: di:dynacat
       glance.url: https://dash.nvsp.dev/
       glance.description: Server's Web Dashboard
       glance.id: dashboard
@@ -33,7 +33,7 @@ services:
       - glance
     labels:
       glance.name: Cup
-      glance.parent: glance
+      glance.parent: dashboard
       # glance.icon: sh:cup-updates
       # glance.url: http://cup:9000/
       # glance.description: Docker Image Update Checker

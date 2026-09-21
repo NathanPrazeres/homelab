@@ -54,7 +54,7 @@
           | withHeader "Accept" "application/json"
           | getResponse }}
 
-      {{ range $i, $user := $usersCall.JSON.Array "" }}
+      {{ range $i, $user := $usersCall.JSON.Array "Items" }}
         {{ if eq ($user.String "Name") $userName }}
           {{ $userID = $user.String "Id" }}
           {{ break }}
@@ -95,7 +95,7 @@
                 | withParameter "GroupItems" "true"
                 | withHeader "Accept" "application/json"
                 | getResponse }}
-            {{ $items = $latestCall.JSON.Array "" }}
+            {{ $items = $latestCall.JSON.Array "Items" }}
           {{ end }}
 
         {{ else if eq $mode "nextup" }}
