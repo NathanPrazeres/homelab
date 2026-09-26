@@ -1,6 +1,7 @@
 {
     "connection_quality": 1,
     "dark_mode": true,
+    "drop_name_blacklist": [],
     "games_to_watch": [
         "Brawlhalla",
         "World of Tanks",
@@ -37,5 +38,7 @@
         "EMOTE": true,
         "UNKNOWN": true
     },
-    "proxy": ""
+    "proxy": "",
+    "telegram_bot_token": "",
+    "telegram_chat_id": ""
 }
