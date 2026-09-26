@@ -4,7 +4,13 @@
       widgets:
         - type: group
           widgets:
-            - $include: widgets/epicgames.yml
+            - type: rss
+              title: Active Bundles
+              cache: 1h
+              collapse-after: 5
+              feeds:
+                - url: "https://isthereanydeal.com/feeds/PT/EUR/bundles.rss"
+
             - type: rss
               title: Giveaways
               preserve-order: true
@@ -14,19 +20,12 @@
               feeds:
                 - url: "https://isthereanydeal.com/feeds/PT/giveaways.rss"
 
-
     - size: full
       widgets:
-        - type: group
+        - type: split-column
           widgets:
             - $include: widgets/steam-specials.yml
-
-            - type: rss
-              title: Active Bundles
-              cache: 1h
-              collapse-after: 7
-              feeds:
-                - url: "https://isthereanydeal.com/feeds/PT/EUR/bundles.rss"
+            - $include: widgets/epicgames.yml
 
     - size: small
       widgets:

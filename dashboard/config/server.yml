@@ -16,7 +16,7 @@
                   hide: false
         - type: dns-stats
           service: pihole-v6
-          url: https://pihole.${DOMAIN}/
+          url: http://pihole.${DOMAIN}/
           password: ${PIHOLE_PASSWORD}
           hour-format: 24h
         - type: monitor
@@ -24,7 +24,7 @@
           title: ""
           sites:
             - title: Pi-Hole
-              url: https://pihole.${DOMAIN}/
+              url: http://pihole.${DOMAIN}/
               icon: di:pi-hole
               allow-insecure: true
 
@@ -39,10 +39,36 @@
               hide: false     # hide disabled
               # optionally order, filters, etc
 
-            - $include: widgets/jellyfin.yml
-            - $include: widgets/media.yml
-            - $include: widgets/immich.yml
+            # NOTE: Only available on Dynacat, NOT Glance
+            - type: playing
+              episode-title-format: series
+              frameless: true
+              hide-username: true
+              hosts:
+                - url: jellyfin:https://media.${DOMAIN}
+                  token: ${JELLYFIN_KEY}
+                  username: ${JELLYFIN_USER}
+              play-state: text
+              show-paused: true
+              show-progress-bar: true
+              show-progress-info: true
+              show-thumbnail: true
+
+            - type: latest-media
+              columns: 3
+              frameless: true
+              hosts:
+                - url: jellyfin:https://media.${DOMAIN}
+                  libraries:
+                    - Shows
+                    - Movies
+                  token: ${JELLYFIN_KEY}
+              item-count: 12
+
+            # - $include: widgets/jellyfin.yml
+            # - $include: widgets/media.yml
             - $include: widgets/qbit.yml
+            - $include: widgets/immich.yml
             - $include: widgets/nextcloud-deck.yml
 
     - size: small

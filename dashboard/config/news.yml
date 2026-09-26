@@ -20,9 +20,9 @@
             feeds:
               - url: https://selfh.st/rss/
                 title: selfh.st
-              - url: https://www.rtp.pt/noticias/rss
-                limit: 10
-                title: RTP
+              # - url: https://www.rtp.pt/noticias/rss
+              #   limit: 10
+              #   title: RTP
 
     - size: full
       widgets:

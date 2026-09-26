@@ -13,13 +13,15 @@ services:
       - glance
       - rev_proxy
     env_file: ".env"
+    environment:
+      - ENABLE_EDITOR=false
     extra_hosts:
       - "pihole.nvsp.dev:$PIHOLE_HOST"  # Fix the monitor widget for Pi-Hole
     labels:
       glance.name: Dynacat
       glance.icon: di:dynacat
       glance.url: https://dash.nvsp.dev/
-      glance.description: Server's Web Dashboard
+      glance.description: Web Dashboard
       glance.id: dashboard
 
   cup:
