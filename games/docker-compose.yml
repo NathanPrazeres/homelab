@@ -1,7 +1,7 @@
 services:
   twitch-drops-miner:
     container_name: twitch-drops-miner
-    image: rangermix/twitch-drops-miner:latest
+    image: rangermix/twitch-drops-miner:1.3.0
     # ports:
     #   - 6080:8080
     volumes:
