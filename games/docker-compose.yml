@@ -5,8 +5,8 @@ services:
     # ports:
     #   - 6080:8080
     volumes:
-      - ${TDM_DATA:-./twitch}/data:/app/data
-      - ${TDM_DATA:-./twitch}/logs:/app/logs
+      - ${TDM_DATA:-./tdm}/data:/app/data
+      - ${TDM_DATA:-./tdm}/logs:/app/logs
     environment:
       - TZ=${TZ:-Europe/London}
 
